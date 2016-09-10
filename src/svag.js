@@ -17,6 +17,14 @@ function Svag(element){
 
   self.element = element;
 
+  function isValidFile(url,filetype,callback){
+    if(typeof url == 'string' && url.indexOf('.' + filetype) > -1){
+      callback();
+    } else {
+      console.error('Invalid file format.');
+    }
+  }
+
   function build(){
     loadFile(Element.getAttribute('src'),render);
   }
@@ -36,7 +44,7 @@ function Svag(element){
     Element.innerHTML = content;
   }
 
-  build();
+  isValidFile(Element.getAttribute('src'),'svg',build);
 }
 
 [].slice.call(document.querySelectorAll('svag')).forEach(Svag);
