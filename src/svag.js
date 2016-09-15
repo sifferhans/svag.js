@@ -41,7 +41,7 @@ function Svag(element){
   }
 
   function render(content){
-    Element.innerHTML = content;
+    Element.innerHTML += content;
   }
 
   isValidFile(Element.getAttribute('src'),'svg',build);
